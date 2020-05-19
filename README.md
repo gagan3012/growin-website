@@ -1,7 +1,6 @@
 # Growin Website 
 
-This project displays the latest quote, company profile and the stocks of the organization.<br/>
-We can select the organization whose stocks price we want from a autocomplete textbox.
+We want to create a platform that gives recommendations based on interests and values to finance novices wanting to get into trading and stock.
 
 ### NPM Packages Used:
 - **react-chartjs-2** for Bar Chart
@@ -22,7 +21,7 @@ Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Pushing code to this repo will also update the setup netlify website. 
 
 
 
