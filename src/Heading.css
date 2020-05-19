@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+.Title {
+  text-align: left;
+  padding: 1%;
+  font-size: xx-large;
+  font-weight: bold;
+  background-color: #58cf20;
+}
+
+header {
+  font-size: xx-large;
+}
