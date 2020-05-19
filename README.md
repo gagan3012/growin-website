@@ -15,7 +15,8 @@ We want to create a platform that gives recommendations based on interests and v
 - https://api.iextrading.com/1.0/ref-data/symbols to get symbols matching the company names.
 
 
-### To run the project:`npm start`
+### To install all the dependancies: `npm install`
+### To run the project: `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
