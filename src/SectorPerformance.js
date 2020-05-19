@@ -133,7 +133,7 @@ const SectorPerformance = ({
                 <Col className="sector_content" style={{ color: checkSign(Industrials) === true ? "#8F0000" : "#004D00" }} xs={12} sm={6}>{Industrials}</Col>
             </Row>
             <Row className="sector_row" >
-                <Col className="sector_heading" xs={12} sm={6}>RealEstate: </Col>
+                <Col className="sector_heading" xs={12} sm={6}>Real Estate: </Col>
                 <Col className="sector_content" style={{ color: checkSign(RealEstate) === true ? "#8F0000" : "#004D00" }} xs={12} sm={6}>{RealEstate}</Col>
             </Row>
             <Row className="sector_row">
