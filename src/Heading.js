@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './Growin.png'
+import logo from './logo-leaf.png'
 import './Heading.css';
 
 function Heading() {

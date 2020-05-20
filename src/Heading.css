@@ -7,7 +7,8 @@
   padding: 1%;
   font-size: xx-large;
   font-weight: bold;
-  /*background-color: #58cf20;*/
+  position:absolute;
+  left: 2rem;
 }
 
 header {

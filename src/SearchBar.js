@@ -7,6 +7,12 @@ import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
 import StockChartBar from "./StockChartBar"; 
 import CompanyNews from "./CompanyNews";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSearch);
+
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
     constructor(property) {
@@ -159,9 +165,13 @@ class SearchBar extends Component {
         const { text } = this.state;
         return (
             <div role="main">
-                <div className="AutoComplete" role="search">
-                    <input value={text} placeholder="Enter name of organization" onChange={this.onCompanyNameChange} type="text" aria-label="Select company name" />
+                <div className="AutoComplete " role="search">
+                    <input
+                        className="form-control" id="search-bar"
+                        value={text} placeholder="Enter name of organization" onChange={this.onCompanyNameChange}
+                        type="text" aria-label="Select company name" />
                     {this.calculateSuggestions()}
+                    <button className="ml-2 btn growin-button"><FontAwesomeIcon icon="search"/></button>
                 </div>
                 <div className="block_latestquote" role="contentinfo">
                     {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition" ></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
@@ -176,6 +186,7 @@ class SearchBar extends Component {
                     {(this.state.stockPrice=== undefined || this.state.stockPrice===null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> : 
                     <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
                 </div>
+
                 
             </div>
         );

@@ -2,8 +2,10 @@ import React from "react";
 import invest from '../invest.png';
 import logo from '../Growin.png'
 import '../App.css';
+import {Link} from "react-router-dom";
 
 class About extends React.Component{
+
     render() {
         return (
             <div className="container">
@@ -14,7 +16,7 @@ class About extends React.Component{
                         Growin' is a platform that gives recommendations to users on choosing their investments based on
                         their interests and trading habits
                     </div>
-                    <button className="btn growin-button">Get Started</button>
+                    <Link to={'/home'}><button  className="btn growin-button">Get Started</button></Link>
                 </div>
                 <div className="about-img centered-right">
                     <img id="invest-img" src={invest}/>

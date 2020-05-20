@@ -9,13 +9,19 @@ input[type="text"] {
   padding: 1%;
   /*background-color: #58cf20;*/
   text-align: center;
+  position:absolute;
+  width: 45rem;
+  left: 18%;
+  top: 3rem;
 }
 
 .AutoComplete > input {
   box-shadow: 5px 5px 5px 0px rgba(158, 157, 157, 0.75);
-  width: 60%;
+  width: 65%;
   margin-right: auto;
   margin-left: auto;
+  height: 3.5rem;
+  display:inline-block;
 }
 
 .AutoComplete > .list-wrapper {
@@ -48,3 +54,8 @@ input[type="text"] {
   margin-bottom: 3%;
   position: relative;
 }
+
+.AutoComplete > button {
+  height: 3.5rem
+}
+
