@@ -124,7 +124,7 @@ class SearchBar extends Component {
                 this.setState({ fiveDayPrice: null });
                 this.setState({ oneMonthPrice: null });
                 this.setState({ news: null });
-                this.setState({ errorMsg: "OOPS! Something went wrong. Please try again." });
+                this.setState({ errorMsg: "OOPS! Something went wrong. " });
             });
         }
     }
@@ -176,7 +176,7 @@ class SearchBar extends Component {
             this.setState({ fiveDayPrice: null });
             this.setState({ oneMonthPrice: null });
             this.setState({ news: null });
-            this.setState({ errorMsg: "OOPS! Something went wrong. Please try again in the stock one." });
+            this.setState({ errorMsg: "OOPS! Something went wrong. " });
         });
     }
 
