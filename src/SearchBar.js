@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
-import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData,getFiveDaysPrice,getNews} from "./RestApiCalls";
+import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData, getFiveDaysPrice, getNews } from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
 import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
-import StockChartBar from "./StockChartBar"; 
+import StockChartBar from "./StockChartBar";
 import CompanyNews from "./CompanyNews";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -17,10 +17,11 @@ library.add(faSearch);
 class SearchBar extends Component {
     constructor(property) {
         super(property);
-        this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, 
-        companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[],
-        fiveDayPrice:[],oneMonthPrice:[],news:[]
-    };
+        this.state = {
+            suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null,
+            companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice: [],
+            fiveDayPrice: [], oneMonthPrice: [], news: [], errorMsg: null
+        };
         this.symbol = { value: "" };
         this.getStock_MainFunction = this.getStock_MainFunction.bind(this);
         this.onCompanyNameChange = this.onCompanyNameChange.bind(this);
@@ -63,7 +64,7 @@ class SearchBar extends Component {
         var i = 0;
         return (<section role="list" className="list-wrapper">
             {suggestions.map((item) => <div role="listitem" className="list-item" key={i++} onClick={() => this.suggestionsSelected(item)}>{item}</div>)}
-            </section>)
+        </section>)
     }
 
     //Given the company name, find the symbol to use in subsequent requests
@@ -87,10 +88,11 @@ class SearchBar extends Component {
             this.setState({ logo_img: null });
             this.setState({ quote: null });
             this.setState({ companyprofile: null });
-            this.setState({stockPrice:null}); 
-            this.setState({fiveDayPrice:null});
-            this.setState({oneMonthPrice:null}); 
-            this.setState({news:null});
+            this.setState({ stockPrice: null });
+            this.setState({ fiveDayPrice: null });
+            this.setState({ oneMonthPrice: null });
+            this.setState({ news: null });
+            this.setState({ errorMsg: null });
         } else {
             this.getSymbolFromCompanyName(this.state.companyName);
             Promise.all([
@@ -105,18 +107,30 @@ class SearchBar extends Component {
                 this.setState({ latestQuote: constructLatestQuote(quote_data) });
                 this.setState({ logo_img: values[2] });
                 let quote_temp = { ...this.state.latestQuote, logo_img: this.state.logo_img };
-                this.setState({quote: quote_temp });
-                this.setState({companyprofile: values[1]['profile'] });
-                this.setState({stockPrice:values[3]['historical']});
-                this.setState({fiveDayPrice:values[4]});
-                this.setState({news:values[5]});
+                this.setState({ quote: quote_temp });
+                this.setState({ companyprofile: values[1]['profile'] });
+                this.setState({ stockPrice: values[3]['historical'] });
+                this.setState({ fiveDayPrice: values[4] });
+                this.setState({ news: values[5] });
                 var date = new Date();
-                var startdate = new Date(date.setMonth(date.getMonth()-1));
-                var oneMonthdata=values[3]['historical'].filter(function(obj){
-                var temp = new Date(obj.date); 
-                return temp>=startdate;
-                }); 
-                this.setState({oneMonthPrice:oneMonthdata});
+                var startdate = new Date(date.setMonth(date.getMonth() - 1));
+                var oneMonthdata = values[3]['historical'].filter(function (obj) {
+                    var temp = new Date(obj.date);
+                    return temp >= startdate;
+                });
+                this.setState({ oneMonthPrice: oneMonthdata });
+                this.setState({ errorMsg: null });
+            }).catch((e) => {
+                console.log(e);
+                this.setState({ latestQuote: null });
+                this.setState({ logo_img: null });
+                this.setState({ quote: null });
+                this.setState({ companyprofile: null });
+                this.setState({ stockPrice: null });
+                this.setState({ fiveDayPrice: null });
+                this.setState({ oneMonthPrice: null });
+                this.setState({ news: null });
+                this.setState({ errorMsg: "OOPS! Something went wrong. " });
             });
         }
     }
@@ -158,6 +172,17 @@ class SearchBar extends Component {
                 Utilities: values[1]['sectorPerformance'][14].changesPercentage
             }
             this.setState({ sector_data: data_temp });
+        }).catch((e) => {
+            console.log(e);
+            this.setState({ latestQuote: null });
+            this.setState({ logo_img: null });
+            this.setState({ quote: null });
+            this.setState({ companyprofile: null });
+            this.setState({ stockPrice: null });
+            this.setState({ fiveDayPrice: null });
+            this.setState({ oneMonthPrice: null });
+            this.setState({ news: null });
+            this.setState({ errorMsg: "OOPS! Something went wrong. " });
         });
     }
 
@@ -173,20 +198,25 @@ class SearchBar extends Component {
                     {this.calculateSuggestions()}
                     <button className="ml-2 btn growin-button"><FontAwesomeIcon icon="search"/></button>
                 </div>
-                <div className="block_latestquote" role="contentinfo">
-                    {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition" ></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
-                </div>
-                <div className="block_latestquote"  role="contentinfo">
-                    {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
-                </div>
-                <div>
-                    {(this.state.news === null || this.state.news.length===0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName}/>}
-                </div>
-                <div>
-                    {(this.state.stockPrice=== undefined || this.state.stockPrice===null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> : 
-                    <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
-                </div>
-                
+                {this.state.errorMsg == null ?
+                    <div>
+                        <div className="block_latestquote" role="contentinfo">
+                            {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition" ></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
+                        </div>
+                        <div className="block_latestquote" role="contentinfo">
+                            {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
+                        </div>
+                        <div>
+                            {(this.state.news === null || this.state.news.length === 0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName} />}
+                        </div>
+                        <div>
+                            {(this.state.stockPrice === undefined || this.state.stockPrice === null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> :
+                                <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice} />}
+                        </div>
+                    </div>
+                    : <div className="error_msg">{this.state.errorMsg}</div>}
+
+
             </div>
         );
     }
