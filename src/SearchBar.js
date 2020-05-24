@@ -186,7 +186,6 @@ class SearchBar extends Component {
                     {(this.state.stockPrice=== undefined || this.state.stockPrice===null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> : 
                     <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
                 </div>
-
                 
             </div>
         );
