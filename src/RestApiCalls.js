@@ -18,6 +18,10 @@ export const sector_perf = () => {
   return fetch("https://financialmodelingprep.com/api/v3/stock/sectors-performance?apikey=5696dbf21c11c436193231d0a30f538f").then(res => res.json());
 };
 
+export const trending_now = () => {
+  return fetch("https://financialmodelingprep.com/api/v3/actives?apikey=5696dbf21c11c436193231d0a30f538f").then(res => res.json());
+};
+
 //Load the symbols and company data
 export const symbols_company = () => {
   return fetch("https://api.iextrading.com/1.0/ref-data/symbols").then(res => res.json());
