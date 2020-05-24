@@ -7,7 +7,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import LowerBar from "./LowerBar";
+import LowerBar from "./Component/LowerBar";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 
@@ -18,9 +18,7 @@ function App() {
         <div className="App">
       {/*<Heading /><SearchBar />*/}
       <Switch>
-
-          <Route path="/home"><Heading /><SearchBar /></Route>
-          <Route path="/test-home"><Home/></Route>
+          <Route path="/home"><Home/></Route>
           <Route path="/"><About/></Route>
       </Switch>
             <LowerBar/>

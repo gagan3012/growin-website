@@ -1,16 +1,27 @@
+
 .App{
    background-image: url('background.png') ;
    background-size: auto;
-   background-repeat: no-repeat;
-   min-height: 1000px
+   background-repeat: repeat-y;
+   min-height: 1000px;
+   flex: 1 0 auto;
+}
+
+body {
+   display: flex;
+   flex-direction: column;
 }
 
 #lower-bar{
    position: absolute;
-   bottom: -16rem;
+   bottom: -70%;
    width: 100%;
    height: 5rem;
    background-color: #f2fcca;
+}
+
+footer{
+   flex-shrink: 0;
 }
 
 #footer-img{
@@ -70,7 +81,7 @@
 }
 .growin-button{
    padding: 1rem;
-   background-color: #5C9C56;
+   background-color: #85a3f8;
    color: white;
    margin-top: 0.5rem;
    font-family: Scope One;
@@ -80,7 +91,7 @@
 }
 
 .growin-button:hover{
-   background-color: #8cd485;
+   background-color: #A2B9F5;
    color: white;
 }
 
@@ -89,4 +100,57 @@
    height: 70px;
    position: relative;
    right: 6.5rem;
+}
+
+#trending{
+   font-family: Garamond,Baskerville,Baskerville Old Face,Hoefler Text,Times New Roman,serif;
+   position: relative;
+   top: 3rem;
+}
+
+#categories{
+   font-family: Garamond,Baskerville,Baskerville Old Face,Hoefler Text,Times New Roman,serif;
+   position: relative;
+   top: 3rem;
+}
+
+#fire-emoji {
+   position:relative;
+   bottom: 3px;
+   width: 40px;
+   height: 40px;
+   display:inline-block;
+}
+
+.trending-item{
+   height: 10rem;
+   background-color: lavender;
+}
+
+.category-item{
+   height: 10rem;
+}
+
+.category-item:hover{
+   opacity: 0.8;
+}
+
+.category-img{
+   width: 200px;
+   height: 160px;
+   z-index: 1;
+}
+
+.category-text{
+   font-family: Nunito;;
+   position: relative;
+   color: white;
+   z-index: 2;
+   top: 6rem;
+   font-size: 1.5rem;
+   text-align-last: center;
+}
+
+.noDisplay{
+   display: none;
 }
