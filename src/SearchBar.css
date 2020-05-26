@@ -12,7 +12,7 @@ input[type="text"] {
   position:relative;
   width: 45rem;
   left: 18%;
-  top: 3rem;
+  top: 1rem;
 }
 
 .AutoComplete > input {

@@ -119,9 +119,9 @@ class SearchBar extends Component {
                 });
                 this.setState({ oneMonthPrice: oneMonthdata });
                 this.setState({ errorMsg: null });
+                this.setState()
             }).catch((e) => {
                 console.log(e);
-                console.log("error")
                 this.setState({ latestQuote: null });
                 this.setState({ logo_img: null });
                 this.setState({ quote: null });

@@ -34,7 +34,12 @@ export const getFullHistoricalData = symbol => {
 
 //Load last 5 days data of stock price
 export const getFiveDaysPrice = symbol => {
-  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_1cd7010654304d9da845c98f9e030ab8").then(res => res.json());
+  let opts = {headers : {
+    'Content-Type': 'application/json',
+        'Accept': 'application/json'
+  }}
+  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_1cd7010654304d9da845c98f9e030ab8", opts).then(res =>{
+      console.log(res); res.json()});
 }
 
 //Load latest news of company

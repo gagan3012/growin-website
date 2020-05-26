@@ -19,7 +19,6 @@ th {
 .main-container
 {
   background-color: black;
-  width: 70%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -29,7 +28,7 @@ th {
   flex-wrap: wrap;
   justify-content: center;
   height: fit-content;
-  background-color: rgb(238, 236, 142);
+  background-color: rgb(255, 255, 213);
     color: black;
     text-align: center;
     font-size: 1vw;
@@ -116,7 +115,7 @@ th {
     justify-content: center;
     align-content: center;
     margin-bottom: 3%;
-    background-color: rgb(238, 236, 142);
+    background-color: rgb(255, 255, 213);
     color: black;
     text-align: center;
     font-size: 10px;
@@ -146,50 +145,34 @@ th {
   }
   
   .button-table-front {
-    margin: 2%;
-    width: 30%;
-    background-color: black;
+    padding: 1rem;
+    background-color: #85a3f8;
     color: white;
-    padding: 2%;
-    border-radius: 10%;
-    font-size: 0.8rem;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    margin-top: 0.5rem;
+    font-family: Scope One;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.3rem;
   }
 
   .button-table-back {
-    margin: 2%;
-    width: 30%;
-    background-color: black;
+    padding: 1rem;
+    background-color: #85a3f8;
     color: white;
-    padding: 1%;
-    border-radius: 10%;
-    font-size: 0.8rem;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    margin-top: 0.5rem;
+    font-family: Scope One;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.3rem;
   }
   
   .button-table-front:hover {
-    margin: 2%;
-    width: 30%;
-    background-color: #b3e6ff;
-    color: black;
-    padding: 2%;
-    border-radius: 10%;
-    font-size: 0.8rem;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    background-color: #A2B9F5;
+    color: white;
   }
   .button-table-back:hover {
-    margin: 5%;
-    width: 30%;
-    background-color: #b3e6ff;
-    color: black;
-    padding: 1%;
-    border-radius: 10%;
-    font-size: 0.8rem;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    background-color: #A2B9F5;
+    color: white;
   }
 
   @media screen and (max-width: 414px) {

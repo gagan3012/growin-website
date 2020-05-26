@@ -20,7 +20,7 @@ class CompanyNews extends Component
             <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
             <div className="front-news" onClick={this.handleClick}>
                 <div className="flex-news-item">News about  {this.props.companyName}</div>
-                <button className="button-news-front" onClick={this.handleClick}>Show</button>
+                <button className="button-news-front btn" onClick={this.handleClick}>Show</button>
             </div>
             <div onClick={this.handleClick}>
                 <div className="newscontainer">
@@ -56,7 +56,7 @@ class CompanyNews extends Component
                                     }
                         </div>
                     </div>
-                    <button className="button-news-back" onClick={this.handleClick}>Back</button>
+                    <button className="button-news-back btn" onClick={this.handleClick}>Back</button>
                 </div>
            </div>
            </ReactCardFlip>

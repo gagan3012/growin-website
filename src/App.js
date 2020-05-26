@@ -21,7 +21,7 @@ function App() {
           <Route path="/home"><Home/></Route>
           <Route path="/"><About/></Route>
       </Switch>
-            <LowerBar/>
+            {/*<LowerBar/>*/}
         </div>
     </Router>
 

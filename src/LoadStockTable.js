@@ -21,7 +21,7 @@ class LoadStockTable extends Component
                 <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
                 <div className="front-table" onClick={this.handleClick}>
                     <div className="flex-table-item">Stock data table for last 5 days! Click the button below to see.</div>
-                    <button className="button-table-front" onClick={this.handleClick}>Show</button>
+                    <button className="button-table-front btn" onClick={this.handleClick}>Show</button>
                 </div>
                 <div className="main-container" onClick={this.handleClick}>
                     <div className="table-container">
@@ -52,7 +52,7 @@ class LoadStockTable extends Component
                                 </tbody>
                                 </Table>
                     </div>
-                    <button className="button-table-back" onClick={this.handleClick}>Back</button>
+                    <button className="button-table-back btn" onClick={this.handleClick}>Back</button>
                 </div>
                 </ReactCardFlip>);
     }
