@@ -9,9 +9,6 @@ import business from '../category-images/business.png'
 
 class Home extends React.Component {
 
-    loadCategories(){
-
-    }
 
     render() {
         return (
@@ -20,7 +17,7 @@ class Home extends React.Component {
                 <div className="mt-3" id="trending">
                     <div className="row">
                         <div className="col-12">
-                            <h1>Trending <img id="fire-emoji" src={fire} alt="fire-emoji"/></h1></div>
+                            <h1>Trending <img  id="fire-emoji" src={fire} alt="fire-emoji"/></h1></div>
                     </div>
                     <div className="row">
                         <div className="col-lg-4 col-sm-6 mb-2">

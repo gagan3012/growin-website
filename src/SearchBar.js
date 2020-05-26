@@ -29,11 +29,9 @@ class SearchBar extends Component {
         this.suggestionsSelected = this.suggestionsSelected.bind(this);
         this.getCompanyNamesForSuggestion = this.getCompanyNamesForSuggestion.bind(this);
     }
-
     //On Detecting change in textbox value, populate the company name suggestions
     //If text is empty, reset the states.
     onCompanyNameChange = (e) => {
-        console.log("hello??")
         const value = e.target.value;
         if (value.length === 0) {
             this.setState({ text: '' });
@@ -102,7 +100,7 @@ class SearchBar extends Component {
                 logo(this.symbol.value),
                 getFullHistoricalData(this.symbol.value),
                 getFiveDaysPrice(this.symbol.value),
-                getNews(this.symbol.value)
+                getNews(this.symbol.value),
             ]).then((values) => {
                 let quote_data = values[0];
                 this.setState({ latestQuote: constructLatestQuote(quote_data) });
@@ -123,6 +121,7 @@ class SearchBar extends Component {
                 this.setState({ errorMsg: null });
             }).catch((e) => {
                 console.log(e);
+                console.log("error")
                 this.setState({ latestQuote: null });
                 this.setState({ logo_img: null });
                 this.setState({ quote: null });
@@ -198,29 +197,22 @@ class SearchBar extends Component {
                         onChange={this.onCompanyNameChange}
                         type="text" aria-label="Select company name" />
                     {this.calculateSuggestions()}
-                    {/*<button className="ml-2 btn growin-button"><FontAwesomeIcon icon="search"/></button>*/}
+                    <button className="ml-2 btn growin-button"><FontAwesomeIcon icon="search"/></button>
                 </div>
                 {this.state.errorMsg == null ?
                     <div>
                         <div className="block_latestquote" role="contentinfo">
-                            {this.state.quote == null ? (this.state.sector_data == null ?
-                                <div className="null_condition" ></div> : <SectorPerformance{...this.state.sector_data} />)
-                                : <LoadLatestQuote{...this.state.quote} />}
+                            {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition" ></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
                         </div>
                         <div className="block_latestquote" role="contentinfo">
-                            {this.state.companyprofile == null ? <div className="null_condition"></div> :
-                                <LoadCompanyProfile{...this.state.companyprofile} />}
+                            {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
                         </div>
                         <div>
-                            {(this.state.news === null || this.state.news.length === 0)
-                                ? <div className="null_condition"></div> :
-                                <CompanyNews news={this.state.news} companyName={this.state.companyName} />}
+                            {(this.state.news === null || this.state.news.length === 0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName} />}
                         </div>
                         <div>
-                            {(this.state.stockPrice === undefined || this.state.stockPrice === null || this.state.stockPrice.length === 0) ?
-                                <div className="null_condition"></div> :
-                                <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice}
-                                               oneMonthPrice={this.state.oneMonthPrice} />}
+                            {(this.state.stockPrice === undefined || this.state.stockPrice === null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> :
+                                <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice} />}
                         </div>
                     </div>
                     : <div className="error_msg">{this.state.errorMsg}</div>}

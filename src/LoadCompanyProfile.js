@@ -33,7 +33,6 @@ const LoadCompanyProfile = ({
     const handleClick = () => {
         setIsFlipped(!isFlipped);
     };
-
     return (
         <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
             <div className="front-profile" onClick={handleClick}>
